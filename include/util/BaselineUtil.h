@@ -12,7 +12,7 @@
 #include "../TriangleEstimators.h"
 #include "../EstimatorUtilStruct.h"
 #include "RandomWalkUtils.h"
-
+using namespace std;
 /** Count the number of triangles incident on the edge e.
  *  The input is given as the Edgeinfo format.
  * @param cg

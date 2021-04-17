@@ -11,8 +11,8 @@
 #include "EstimatorUtilStruct.h"
 #include "TriangleEstimators.h"
 #include "TETRIS.h"
-#include "RandomWalkUtils.h"
-#include "BaselineUtil.h"
+#include "util/RandomWalkUtils.h"
+#include "util/BaselineUtil.h"
 
 
 bool IsTrue (bool b) {return b;}

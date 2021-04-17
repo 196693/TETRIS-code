@@ -10,12 +10,15 @@
 #include "include/TriangleEstimators.h"
 #include  "include/Triadic.h"
 #include "include/EstimatorUtil.h"
-//#include "include/BaselineEstimators.h"
+#include "include/BaselineEstimators.h"
 #include "include/util/ConfigReader.h"
 #include "include/EstimateEdgeCount.h"
 
 #include "include/baseline/VertexMCMC.h"
 #include "include/baseline/SubgraohRandomWalk_SRW.h"
+#include "include/baseline/SEC.h"
+#include "include/baseline/SERWC.h"
+#include "include/baseline/UESS.h"
 #include "include/TETRIS.h"
 
 using namespace Escape;
@@ -102,32 +105,32 @@ int main(int argc, char *argv[]) {
                             params.algo_name = "_new_" + algo_name;
                             TriangleEstimator(&cg, params, triangle_count, TETRIS);
                         }
-//                            // Baseline: sample an edge and count the number of triangles incident on it. Then scale.
-//                        else if (algo_name == "EstTriByEdgeSampleAndCount")
-//                            TriangleEstimator(&cg, params, triangle_count, EstTriByEdgeSampleAndCount);
-//                            // Baseline:  do a random walk and count the number of triangles incident on each edge. Then scale.
-//                        else if (algo_name == "SERWC")
-//                            TriangleEstimator(&cg, params, triangle_count, SERWC);
-//                            // Baseline: do a random walk and count the teiangles in induces multi-graph. Scale.
-//                        else if (algo_name == "EstTriByRW")
-//                            TriangleEstimator(&cg, params, triangle_count, EstTriByRW);
-//                            // Sample an edge, sample a neighbor and estimate the teiangles incident on the neighbor. Scale up.
-//                        else if (algo_name == "EstTriByRWandNborSampling")
-//                            TriangleEstimator(&cg, params, triangle_count, EstTriByRWandNborSampling);
-//                            // Sample each edge with probability p and count traingles in the subsampled graph. Scale by 1/p^3.
-//                        else if (algo_name == "EstTriBySparsification")
-//                            TriangleEstimator(&cg, params, triangle_count, EstTriBySparsification);
-//                            // Uniformly Sample edges, and count the number of triangles in the multi-graph.
-//                        else if (algo_name == "UESS")
-//                            TriangleEstimator(&cg, params, triangle_count, UESS);
-                        else if (algo_name == "EdgeEstimator")
-                            EdgeEstimator(&cg, params);
-                        else if (algo_name == "DegreeSqEstimator")
-                                    DegreeSqEstimator(&cg, params);
-//                        else if (algo_name == "VertexMCMC")
-//                            TriangleEstimator(&cg, params, triangle_count, VertexMCMC);
-//                        else if (algo_name == "SRW1")
-//                            TriangleEstimator(&cg, params, triangle_count, SRW1);
+                           // Baseline: sample an edge and count the number of triangles incident on it. Then scale.
+                    //    else if (algo_name == "EstTriByEdgeSampleAndCount")
+                    //        TriangleEstimator(&cg, params, triangle_count, EstTriByEdgeSampleAndCount);
+                    //        // Baseline:  do a random walk and count the number of triangles incident on each edge. Then scale.
+                       else if (algo_name == "SERWC")
+                           TriangleEstimator(&cg, params, triangle_count, SERWC);
+                    //        // Baseline: do a random walk and count the teiangles in induces multi-graph. Scale.
+                    //    else if (algo_name == "EstTriByRW")
+                    //        TriangleEstimator(&cg, params, triangle_count, EstTriByRW);
+                    //        // Sample an edge, sample a neighbor and estimate the teiangles incident on the neighbor. Scale up.
+                    //    else if (algo_name == "EstTriByRWandNborSampling")
+                    //        TriangleEstimator(&cg, params, triangle_count, EstTriByRWandNborSampling);
+                    //        // Sample each edge with probability p and count traingles in the subsampled graph. Scale by 1/p^3.
+                    //    else if (algo_name == "EstTriBySparsification")
+                    //        TriangleEstimator(&cg, params, triangle_count, EstTriBySparsification);
+                           // Uniformly Sample edges, and count the number of triangles in the multi-graph.
+                       else if (algo_name == "UESS")
+                           TriangleEstimator(&cg, params, triangle_count, UESS);
+                        // else if (algo_name == "EdgeEstimator")
+                        //     EdgeEstimator(&cg, params);
+                        // else if (algo_name == "DegreeSqEstimator")
+                        //             DegreeSqEstimator(&cg, params);
+                       else if (algo_name == "VertexMCMC")
+                           TriangleEstimator(&cg, params, triangle_count, VertexMCMC);
+                       else if (algo_name == "SRW1")
+                           TriangleEstimator(&cg, params, triangle_count, SRW1);
                         else
                             std::cout << "Unknown algorithm option. \n";
                     }
