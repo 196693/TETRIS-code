@@ -44,8 +44,8 @@ void TriangleEstimator (CGraph *cg, Parameters params, Count true_triangle_count
     // Print to console
     if (params.print_to_console) {
         WriteHeaderInOutput(stdout, params, cg, true_triangle_count);
-        WriteAlgorithmOutput(stdout, params.algo_name, params, est_stats);
-        WriteRawData(stdout,estimates);
+        WriteAlgorithmSimpleOutput(stdout, params.algo_name, params, est_stats);
+        // WriteRawData(stdout,estimates);
     }
 
     // print to file
@@ -85,6 +85,7 @@ void TriangleEstimator (CGraph *cg, Parameters params, Count true_triangle_count
         }
         WriteHeaderInOutput(f, params, cg, true_triangle_count);
         WriteAlgorithmOutput(f, params.algo_name, params, est_stats);
+        WriteAlgorithmSimpleOutput(f, params.algo_name, params, est_stats);
         WriteRawData(f, estimates);
 
         fclose(f);

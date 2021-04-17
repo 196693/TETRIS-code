@@ -94,6 +94,13 @@ void WriteAlgorithmOutput(FILE *f, std::string algo_name, Parameters params,
             est_stats.vertices_seen_max_percentage);
 }
 
+void WriteAlgorithmSimpleOutput(FILE *f, std::string algo_name, Parameters params,
+                          EstimatorStats est_stats) {
+    fprintf(f, "#--------------------------------------------------------%s\n", algo_name.c_str());
+    fprintf(f, "#Results: Median Err, Query Complexity of simple sampling\n");
+    fprintf(f, "%.3lf,%.6lf\n\n", est_stats.median_error_percentage, est_stats.query_complexity_max_percentage);
+}
+
 void WriteRawData (FILE *f, std::vector<Estimates> const &estimates) {
     fprintf(f, "triangle_estimate,fraction_of_edges_seen,fraction_of_vertices_seen\n");
     for (auto & est : estimates) {
